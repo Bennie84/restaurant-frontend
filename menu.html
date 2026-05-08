@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restoran Menu</title>
+  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="https://kit.fontawesome.com/b491b3531e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- Nav Bar -->
+  <div class="menu-header">
+   <!-- <nav class="menu-header-left-section"> -->
+    <i class="fa-solid fa-utensils"></i> 
+    <a href="index.html" class="restoran-logo-link">Ember & Ash</a>
+    <!-- <ul class="nav-links"> -->
+      <!-- <li><a href="index.html" class="active">Home</a></li> -->
+      <!-- <li><a href="about.html" class="active">About</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="menu.html" class="active">Menu</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul> -->
+            <!-- <div class="menu-header-middle-section"> -->
+            <div class="restoran-search-btn">
+              <input class="search-bar" type="text" placeholder="Search">
+
+              <button class="search-button">
+                <img src="images/icons/search-icon.png" alt="" class="search-icon">
+              </button>
+             </div>
+             <!-- </div> -->
+
+    <div class="cart-icon-wrapper">
+      <a  class ="cart-link" href="checkout.html">
+       <img src="images/icons/cart-icon.png" alt="" class="cart-icon">
+       <div class="cart-quantity js-cart-quantity"></div>
+       <div class="cart-text">Cart</div>
+      </a>
+    </div> 
+   
+  <!-- </nav> -->
+  </div>
+
+         <!-- search button -->
+           <!-- <div class="restoran-search-btn">
+              <input class="search-bar" type="text" placeholder="Search">
+
+              <button class="search-button">
+                <img src="images/icons/search-icon.png" alt="" class="search-icon">
+              </button>
+             </div> -->
+
+        <!-- Menu Section -->
+          <div class="menu-section">
+            <div class="header">
+                <h1>Order Online for <span class="delivery">Delivery</span></h1>
+                <p class="para">Fresh meals delivered to your door. Browse our menu and order now!</p>
+            </div>
+
+            
+            <!-- Category Tabs -->
+            <!-- <div class="menu-categories">
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn active" data-category="steak">🥩 Steaks</button>
+                <button class="category-btn" data-category="burger">🍔 Burgers</button>
+                <button class="category-btn" data-category="pasta">🍝 Pasta</button>
+                <button class="category-btn" data-category="salad">🥗 Salads</button>
+                <button class="category-btn" data-category="dessert">🍰 Desserts</button>
+            </div> -->
+
+
+            <!-- <section class="menu-grid">
+           
+                <div class="menu-card">
+                  <div class="menu-card-image">
+              <img src="./images/products/steak.jpeg" class="steak-img" alt="Steak">
+            <span class="popular-badge">Popular</span>
+           </div>
+           <div class="menu-card-content">
+            <div class="menu-card-header">
+              <h3>Grilled Ribeye Steak</h3>   
+            </div>
+           <div class="rating">
+            <span>⭐⭐⭐⭐⭐ (128 reviews)</span>
+           </div>
+           <p class="menu-card-description">
+            Prime ribeye grilled to perfection with roasted vegetables and garlic mashed potatoes.
+           </p>
+           <div class="menu-card-tags">
+            <span class="tag">Grilled</span>
+            <span class="tag">Gluten-Free</span>
+           </div>
+           <div class="menu-card-footer">
+            <div class="price-section">
+              <div class="menu-price">$34.99</div>
+            </div> 
+           <div class="add-to-cart-section">
+            <div class="quantity-control">
+              <button class="quantity-btn">-</button>
+              <span class="quantity-display">1</span>
+              <button class="quantity-btn">+</button>
+            </div>
+            <button class="add-to-cart-btn">Add to Cart</button>
+           </div>
+           </div> 
+            </section> -->
+         </div>
+
+          <div class="main">
+            <div class="products-grid js-products-grid">
+            
+           </div>
+          </div>
+          <!-- <script src ="data/cart.js"></script>
+          <script src ="data/product.js"></script> -->
+          <script type ="module"src ="scripts/restoran.js"></script>
+    </body>
+</html>
+
+
+
+
+<!-- <div class="product-container">
+                <div class="product-image-container">
+                  <img src="images/products/steak.jpeg" alt="" class="product-image">
+                </div>
+
+               <div class="product-name 
+               limit-text-to-2-lines">
+                Grilled Ribeye Steak
+               </div>
+                 <div class="product-price">
+                  #35,000
+                 </div>
+
+                 <div class="product-spacer"></div>
+                 <div class="added-to-cart">
+                  <img src="images/icons/checkmark.png" alt="">
+                  Added
+                 </div>
+
+                 <button class="add-to-cart-button 
+                 button-primary"> 
+                  Add to Cart
+                 </button>
+              </div>
+
+              <div class="product-container">
+                <div class="product-image-container">
+                  <img src="images/products/steak.jpeg" alt="" class="product-image">
+                </div>
+
+               <div class="product-name 
+               limit-text-to-2-lines">
+                Grilled Ribeye Steak
+               </div>
+                 <div class="product-price">
+                  #35,000
+                 </div>
+
+                 <div class="product-spacer"></div>
+                 <div class="added-to-cart">
+                  <img src="images/icons/checkmark.png" alt="">
+                  Added
+                 </div>
+
+                 <button class="add-to-cart-button 
+                 button-primary">
+                  Add to Cart
+                 </button>
+              </div>
+ -->

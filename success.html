@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed - Ember & Ash</title>
+  <link rel="stylesheet" href="styles/success.css">
+</head>
+<body>
+
+  <div class="restaurant-logo"> Ember & Ash</div>
+
+  <div class="success-container">
+
+    <!-- TOP SECTION -->
+    <div class="success-top">
+      <div class="success-icon">🎉</div>
+      <div class="success-title">Order Confirmed!</div>
+      <div class="success-message">
+        Thank you for your order! Your food is being prepared
+        and will be ready in approximately 30–45 minutes.
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ORDER DETAILS -->
+    <div class="detail-row">
+      <span class="label">Status</span>
+      <span class="value">✅ Payment Confirmed</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Estimated Time</span>
+      <span class="value">30 – 45 minutes</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Reference</span>
+      <span class="value js-reference">—</span>
+    </div>
+    <div class="detail-row">
+      <span class="label">Amount Paid</span>
+      <span class="value js-amount">—</span>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ORDER ITEMS -->
+    <div class="section-title">Your Order</div>
+    <div class="js-order-items"></div>
+
+    <!-- BUTTONS -->
+    <div class="success-buttons">
+      <a href="index.html" class="btn-home">Back to Home</a>
+      <a href="menu.html" class="btn-menu">Order Again</a>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { products } from './data/product.js';
+
+    // GET URL PARAMETERS
+    const params = new URLSearchParams(window.location.search);
+    const reference = params.get('reference');
+    const amount = params.get('amount');
+
+    // SHOW REFERENCE
+    if (reference) {
+      document.querySelector('.js-reference').innerHTML = reference;
+    }
+
+    // SHOW AMOUNT
+    if (amount) {
+      document.querySelector('.js-amount').innerHTML =
+        `₦${Number(amount).toLocaleString()}`;
+    }
+
+    // SHOW ORDER ITEMS
+    const lastOrder = JSON.parse(localStorage.getItem('lastOrder'));
+
+    if (lastOrder && lastOrder.length > 0) {
+      let itemsHTML = '';
+
+      lastOrder.forEach((cartItem) => {
+        const product = products.find(p => p.id === cartItem.productId);
+        if (!product) return;
+
+        const selectedOption = product.customizationOptions
+          .find(opt => opt.id === cartItem.customizationId);
+        const customizationLabel = selectedOption
+          ? selectedOption.label
+          : 'No customization';
+
+        itemsHTML += `
+          <div class="order-item">
+            <img src="${product.image}" alt="${product.name}">
+            <div class="order-item-details">
+              <div class="order-item-name">${product.name}</div>
+              <div class="order-item-customization">🍽️ ${customizationLabel}</div>
+              <div class="order-item-qty">Quantity: ${cartItem.quantity}</div>
+            </div>
+          </div>
+        `;
+      });
+
+      document.querySelector('.js-order-items').innerHTML = itemsHTML;
+    }
+
+    // CLEAR lastOrder from localStorage
+    localStorage.removeItem('lastOrder');
+  </script>
+
+</body>
+</html>
