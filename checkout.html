@@ -1,38 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout</title>
-  <link rel="stylesheet" href="styles/checkout.css">
-  <link rel="stylesheet" href="styles/styles.css">
-   <script src="https://kit.fontawesome.com/b491b3531e.js" crossorigin="anonymous"></script>
-   <script src="scripts/paystack.js"></script>
-</head>
-<body>
-  <div class="checkout-header">
-    <div class="header-content">
-      <div class="checkout-header-left-section">
-        <i class="fa-solid fa-utensils"></i> 
-         <a href="index.html " class="restoran-logo-link">Ember & Ash</a>
-      </div>
-      
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link rel="stylesheet" href="styles/checkout.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/b491b3531e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts/paystack.js"></script>
+  </head>
+  <body>
+    <div class="checkout-header">
+      <div class="header-content">
+        <div class="checkout-header-left-section">
+          <i class="fa-solid fa-utensils"></i>
+          <a href="index.html " class="restoran-logo-link">Ember & Ash</a>
+        </div>
 
-      <div class="checkout-header-middle-section">
-        Checkout(<a class="return-to-home-link js-return-to-home-link" href="menu.html">
-        </a>)
-      </div>
+        <div class="checkout-header-middle-section">
+          Checkout(<a
+            class="return-to-home-link js-return-to-home-link"
+            href="menu.html"
+          >
+          </a
+          >)
+        </div>
 
-      <div class="checkout-header-right-section">
-        <img src="images/icons/checkout-lock-icon.png">
+        <div class="checkout-header-right-section">
+          <img
+            src="images/icons/checkout-lock-icon.png"
+            alt="Secure checkout icon"
+          />
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="main">
-    <div class="page-title">Review your order</div>
-    <div class="checkout-grid">
-      <div class="order-summary js-order-summary">
-         <!-- <div class="cart-item-container"> 
+    <div class="main">
+      <div class="page-title">Review your order</div>
+      <div class="checkout-grid">
+        <div class="order-summary js-order-summary">
+          <!-- <div class="cart-item-container"> 
           <div class="delivery-date">
             Delivery date: Tuesday, June 21
           </div>
@@ -108,8 +117,8 @@
               </div>
           </div>
         </div>  -->
-        <!-- SECOND CONTAINER -->
-           <!-- <div class="cart-item-container"> 
+          <!-- SECOND CONTAINER -->
+          <!-- <div class="cart-item-container"> 
             <div class="delivery-date">
               Delivery date: Wednesday, June 15
             </div>
@@ -183,11 +192,10 @@
               </div>
             </div>
           </div>  -->
-      </div> 
+        </div>
 
-      <!-- Payment Summary -->
+        <!-- Payment Summary -->
         <div class="payment-summary js-payment-summary">
-
           <!-- <div class="payment-summary-title">
             Order Summary
           </div>  -->
@@ -221,22 +229,20 @@
             Place your order
           </button> -->
         </div>
+      </div>
     </div>
-  </div>
     <div class="modal-overlay js-modal-overlay">
       <div class="modal-box">
         <div class="modal-header">
           <h2>Order Confirmation</h2>
-          <span class="modal-close js-modal-close"></span>
+          <span class="modal-close js-modal-close">×</span>
         </div>
         <div class="modal-items js-modal-items"></div>
         <div class="modal-summary js-modal-summary"></div>
-        <button class="modal-pay-btn js-modal-pay-btn">
-          Confirm & Pay
-        </button>
+        <button class="modal-pay-btn js-modal-pay-btn">Confirm & Pay</button>
       </div>
     </div>
-  <script type="module" src ="scripts/checkout.js"></script>
-  <script src ="data/dayjs.min.js"></script>
-</body>
+    <script type="module" src="scripts/checkout.js"></script>
+    <script src="data/dayjs.min.js"></script>
+  </body>
 </html>

@@ -7,18 +7,18 @@
 
   /* display: flex;
   justify-content: center; */
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .header-content {
   /* width:100px; */
-  max-width:1100px;
+  max-width: 1100px;
 
-  display:flex;
+  display: flex;
   align-items: center;
 }
 
@@ -39,19 +39,17 @@
   border: 1px solid orange;
   cursor: pointer;
 }
- 
+
 /* FOR THE MODAL OVERLAY */
 .modal-overlay {
   display: none;
   position: fixed;
-  top:0;
-  left: 0;
-  width:100vw;
-  height: 100vh;
-  background-color: rgba(0,0,0,0.7);
-  z-index:1000;
+  inset: 0;
+  background-color: rgba(2, 8, 29, 0.84);
+  z-index: 1000;
   justify-content: center;
   align-items: center;
+  padding: 26px;
 }
 
 .modal-overlay.active {
@@ -59,140 +57,174 @@
 }
 
 .modal-box {
-  background-color: rgb(26, 26, 46);;
-  border: 1px solid #ffa500;
-  border-radius: 8px;
-  padding: 24px;
-  width: 90%;
-  max-width:550px;
-  max-height:85vh;
+  width: min(560px, 100%);
+  max-height: min(85vh, 720px);
   overflow-y: auto;
-  color:#fff;
+  background: linear-gradient(180deg, #14142f, #1e1f3c);
+  border: 1px solid rgba(255, 166, 0, 0.16);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.38);
+  color: #f4f4f8;
   position: relative;
-  z-index:1001;
 }
 
-.modal-header{
-  display:flex;
+.modal-header {
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #ffa50055;
-  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 166, 0, 0.12);
+  padding-bottom: 16px;
 }
+
 .modal-header h2 {
   color: #ffa500;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  margin: 0;
 }
-.modal-close{
-  cursor: pointer;
+
+.modal-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: #ffa500;
-  font-size:1.2rem;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
+
+.modal-close:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.modal-items {
+  display: grid;
+  gap: 14px;
+}
+
 .modal-item {
-display: flex !important;
-flex-direction: row !important;
-gap: 12px;
-padding: 12px 0;
-border-bottom: 1px solid #ffffff22;
-align-items: flex-start;
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: flex-start;
 }
-.modal-item img  {
-  /* width:70px !important;
-  height: 70px !important;
-  object-fit: cover !important;
-  border-radius:6px;
-  flex-shrink: 0; */
-  margin-top: 12px;
+
+.modal-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  object-fit: cover;
 }
 
 .modal-item-details {
   flex: 1;
   min-width: 0;
 }
+
 .modal-item-name {
-  font-size: 0.9rem;
-  font-weight: bold;
-  margin-bottom: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #f6f6fc;
 }
+
 .modal-item-customization {
-  font-size:0.8rem;
-  color: #ffa500;
-  margin-bottom: 4px;
+  font-size: 0.92rem;
+  color: #ffc06a;
+  margin-bottom: 8px;
 }
 
 .modal-item-price {
-  font-size: 0.85rem;
-  color: #ccc;
-}
-.modal-summary {
-  margin-top: 16px;
-  padding-top: 12px;
-}
-.modal-summary-row {
-  display:flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  margin-bottom: 6px;
-  color:#ccc;
+  font-size: 0.95rem;
+  color: #d4d7e2;
 }
 
-.modal-summary-row-total{
-  color: #ffa500;
-  font-weight: 1rem;
-  font-size: 1rem;
-  border-top: 1px solid #ffa50055;
-  padding-top: 10px;
-  margin-top: 8px; 
+.modal-summary {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
+
+.modal-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #d0d3e1;
+}
+
+.modal-summary-row-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffc06a;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 166, 0, 0.18);
+  margin-top: 14px;
+}
+
 .modal-pay-btn {
   width: 100%;
-  margin-top: 20px;
-  padding: 12px;
-  background-color: #ffa500;
-  color: #000;
-  border:none;
-  border-radius: 6px;
-  font-weight: bold;
+  margin-top: 24px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffb648, #ff9d00);
+  color: #111;
+  font-weight: 800;
   font-size: 1rem;
   cursor: pointer;
-} 
-.modal-pay-btn:hover {
-  background-color: #d4821a;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+  box-shadow: 0 18px 40px rgba(255, 142, 0, 0.22);
 }
 
-/* @media is used to create responsive design (making the
-   website look good on any screen size). This @media
-   means when the screen width is 575px or less, different
-   styles (inside the {...}) will be applied. */
-   @media (max-width: 575px) {
-    .checkout-header-left-section {
-      width: auto;
-    }
-    .restoran-logo-link {
-      display: none;
-    }
-   }
-    
-   .fa-solid.fa-utensils {
-    color:#ffa500;
-   }
-  .checkout-header-middle-section {
-    flex: 1;
-    flex-shrink: 0;
-    text-align: center;
+.modal-pay-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
 
-    font-size: 25px;
-    font-weight: 500;
-    color:#d4821a;
-   
-
-    display:flex;
-    justify-content: center;
+@media (max-width: 575px) {
+  .checkout-header-left-section {
+    width: auto;
   }
+  .restoran-logo-link {
+    display: none;
+  }
+}
+
+.fa-solid.fa-utensils {
+  color: #ffa500;
+}
+.checkout-header-middle-section {
+  flex: 1;
+  flex-shrink: 0;
+  text-align: center;
+
+  font-size: 25px;
+  font-weight: 500;
+  color: #d4821a;
+
+  display: flex;
+  justify-content: center;
+}
 .return-to-home-link {
   color: orange;
-  font-size:23px;
+  font-size: 23px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -224,10 +256,10 @@ align-items: flex-start;
 
 .checkout-header-right-section {
   text-align: center;
-  width:150px;
+  width: 150px;
 }
 
-@media(max-width: 1000px) {
+@media (max-width: 1000px) {
   .checkout-header-right-section {
     width: auto;
   }
@@ -242,7 +274,7 @@ align-items: flex-start;
   margin-top: 140px;
   margin-bottom: 100px;
 
-/* margin-left: auto;
+  /* margin-left: auto;
      margin-right auto;
      Is a trick for centering an element horizontally
      without needing a container. */
@@ -251,7 +283,7 @@ align-items: flex-start;
 }
 .page-title {
   font-weight: 700;
-  font-size:22px;
+  font-size: 22px;
   margin-bottom: 18px;
   color: rgb(222, 222, 222);
 }
@@ -262,7 +294,7 @@ align-items: flex-start;
 
   /* Use align-items: start; to prevent the elements
      in the grid from stretching vertically. */
- align-items: start;
+  align-items: start;
 }
 
 @media (max-width: 1000px) {
@@ -276,15 +308,15 @@ align-items: flex-start;
 
 .cart-item-container,
 .payment-summary {
- border: 1px solid #ffa600bb;
- border-radius: 4px;
- padding: 18px;
+  border: 1px solid #ffa600bb;
+  border-radius: 4px;
+  padding: 18px;
 }
 .cart-item-container {
   margin-bottom: 5px;
 }
 .payment-summary {
-  padding-bottom:5px;
+  padding-bottom: 5px;
 }
 
 @media (max-width: 1000px) {
@@ -293,8 +325,8 @@ align-items: flex-start;
       1 in the grid. (Normally, the row that an element is
       placed in is determined by the order of the elements in
       the HTML. grid-row overrides this default ordering). */
-      grid-row: 1;
-      margin-bottom: 12px;
+    grid-row: 1;
+    margin-bottom: 12px;
   }
 }
 
@@ -311,22 +343,22 @@ align-items: flex-start;
   /* 100px 1fr 1fr; means the 2nd and 3rd column will
      take up half the remaining space in the grid
      (they will divide up the remaining space evenly). */
-     grid-template-columns: 100px 1fr 1fr;
-     column-gap: 25px;
+  grid-template-columns: 100px 1fr 1fr;
+  column-gap: 25px;
 }
 
-@media(max-width: 1000px) {
+@media (max-width: 1000px) {
   .cart-item-details-grid {
     grid-template-columns: 100px 1fr;
     row-gap: 30px;
   }
 }
 .product-image {
- max-width: 100px;
- max-height:120px;
+  max-width: 100px;
+  max-height: 120px;
 
- margin-left: auto;
- margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .product-name {
   font-weight: 700;
@@ -337,21 +369,19 @@ align-items: flex-start;
   font-weight: 700;
   margin-bottom: 5px;
 }
-                
+
 .product-quantity .link-primary {
   margin-left: 3px;
   color: rgb(222, 222, 222);
   cursor: pointer;
 }
-.product-quantity .link-primary:hover{
+.product-quantity .link-primary:hover {
   color: orange;
 }
 
-
-
-@media(max-width: 1000px) {
-.delivery-options {
-/* grid-column: 1 means this element will be placed
+@media (max-width: 1000px) {
+  .delivery-options {
+    /* grid-column: 1 means this element will be placed
        in column 1 in the grid. (Normally, the column that
        an element is placed in is determined by the order
        of the elements in the HTML. grid-column overrides
@@ -360,27 +390,27 @@ align-items: flex-start;
        / span 2 means this element will take up 2 columns
        in the grid (Normally, each element takes up 1
        column in the grid). */
-       grid-column: 1 / span 2;
-}
+    grid-column: 1 / span 2;
+  }
 }
 
 .delivery-options-title {
   font-weight: 700;
   margin-bottom: 10px;
 }
-                  
+
 .delivery-option {
   display: grid;
   grid-template-columns: 24px 1fr;
   margin-bottom: 12px;
   cursor: pointer;
 }
-                 
+
 .delivery-option-input {
   margin-left: 0px;
   cursor: pointer;
 }
-                    
+
 .delivery-option-date {
   color: #ffa600bb;
   font-weight: 500;
@@ -388,8 +418,8 @@ align-items: flex-start;
 }
 
 .delivery-option-price {
- color: rgb(120, 120, 120);
- font-size: 15px;
+  color: rgb(120, 120, 120);
+  font-size: 15px;
 }
 
 .payment-summary-title {
@@ -397,24 +427,24 @@ align-items: flex-start;
   font-size: 18px;
   margin-bottom: 12px;
 }
-            
+
 .payment-summary-row {
   display: grid;
   /* 1fr auto; means the width of the 2nd column will be
      determined by the elements inside the column (auto).
      The 1st column will take up the remaining space. */
-     grid-template-columns: 1fr auto;
-     
-     font-size: 15px;
-     margin-bottom: 9px;
+  grid-template-columns: 1fr auto;
+
+  font-size: 15px;
+  margin-bottom: 9px;
 }
-            
+
 .payment-summary-money {
   text-align: right;
 }
 
 .subtotal-row .payment-summary-money {
-  border-top:1px solid rgb(222, 222, 222);
+  border-top: 1px solid rgb(222, 222, 222);
 }
 
 .subtotal-row {
@@ -425,10 +455,10 @@ align-items: flex-start;
   font-weight: 700;
   font-size: 18px;
   border-top: 1px solid rgb(222, 222, 222);
-  padding-top:18px;
+  padding-top: 18px;
 }
 .place-order-button {
-  width:100%;
+  width: 100%;
   padding-top: 12px;
   padding-bottom: 12px;
   border-radius: 8px;
@@ -446,16 +476,486 @@ align-items: flex-start;
   background-color: orange;
   text-transform: capitalize;
 }
- /* THIS IS FOR THE NEW SAVE BUTTON IMPLEMENT */
-.quantity-input{
-  width:30px;
+/* THIS IS FOR THE NEW SAVE BUTTON IMPLEMENT */
+.quantity-input {
+  width: 30px;
   display: none;
 }
 .save-quantity-link {
- display: none;
+  display: none;
 }
 .is-editting-quantity .quantity-input {
- display: initial;
+  display: initial;
+}
+.is-editting-quantity .save-quantity-link {
+  display: initial;
+}
+.is-editting-quantity .quantity-label {
+  display: none;
+}
+.is-editting-quantity .update-quantity-link {
+  display: none;
+}
+
+/* END HERE */
+
+.payment-summary-empty,
+.empty-cart-message {
+  color: rgb(200, 200, 210);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 12px 0;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(2, 8, 29, 0.84);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 26px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-box {
+  width: min(560px, 100%);
+  max-height: min(85vh, 720px);
+  overflow-y: auto;
+  background: linear-gradient(180deg, #14142f, #1e1f3c);
+  border: 1px solid rgba(255, 166, 0, 0.16);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.38);
+  color: #f4f4f8;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 166, 0, 0.12);
+  padding-bottom: 16px;
+}
+
+.modal-header h2 {
+  color: #ffa500;
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.modal-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffa500;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.modal-items {
+  display: grid;
+  gap: 14px;
+}
+
+.modal-item {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: flex-start;
+}
+
+.modal-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.modal-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.modal-item-name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #f6f6fc;
+}
+
+.modal-item-customization {
+  font-size: 0.92rem;
+  color: #ffc06a;
+  margin-bottom: 8px;
+}
+
+.modal-item-price {
+  font-size: 0.95rem;
+  color: #d4d7e2;
+}
+
+.modal-summary {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.modal-summary-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: #d0d3e1;
+}
+
+.modal-summary-row-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffc06a;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 166, 0, 0.18);
+  margin-top: 14px;
+}
+
+.modal-pay-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffb648, #ff9d00);
+  color: #111;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+  box-shadow: 0 18px 40px rgba(255, 142, 0, 0.22);
+}
+
+.modal-pay-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+/* @media is used to create responsive design (making the
+   website look good on any screen size). This @media
+   means when the screen width is 575px or less, different
+   styles (inside the {...}) will be applied. */
+@media (max-width: 575px) {
+  .checkout-header-left-section {
+    width: auto;
+  }
+  .restoran-logo-link {
+    display: none;
+  }
+}
+
+.fa-solid.fa-utensils {
+  color: #ffa500;
+}
+.checkout-header-middle-section {
+  flex: 1;
+  flex-shrink: 0;
+  text-align: center;
+
+  font-size: 25px;
+  font-weight: 500;
+  color: #d4821a;
+
+  display: flex;
+  justify-content: center;
+}
+.return-to-home-link {
+  color: orange;
+  font-size: 23px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+  .checkout-header-middle-section {
+    font-size: 20px;
+    margin-right: 60px;
+    margin-top: 12px;
+  }
+  .return-to-home-link {
+    font-size: 18px;
+  }
+  .modal-pay-btn {
+    padding: 13px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .checkout-header-middle-section {
+    margin-right: 5px;
+  }
+  .modal-pay-btn {
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+}
+
+.checkout-header-right-section {
+  text-align: center;
+  width: 150px;
+}
+
+@media (max-width: 1000px) {
+  .checkout-header-right-section {
+    width: auto;
+  }
+}
+
+/* MAIN SECTION */
+.main {
+  max-width: 1100px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  margin-top: 140px;
+  margin-bottom: 100px;
+
+  /* margin-left: auto;
+     margin-right auto;
+     Is a trick for centering an element horizontally
+     without needing a container. */
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-title {
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 18px;
+  color: rgb(222, 222, 222);
+}
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  column-gap: 12px;
+
+  /* Use align-items: start; to prevent the elements
+     in the grid from stretching vertically. */
+  align-items: start;
+}
+
+@media (max-width: 1000px) {
+  .main {
+    max-width: 500px;
+  }
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cart-item-container,
+.payment-summary {
+  border: 1px solid #ffa600bb;
+  border-radius: 4px;
+  padding: 18px;
+}
+.cart-item-container {
+  margin-bottom: 5px;
+}
+.payment-summary {
+  padding-bottom: 5px;
+}
+
+@media (max-width: 1000px) {
+  .payment-summary {
+    /*rid-row: 1 means this element will be placed into row
+      1 in the grid. (Normally, the row that an element is
+      placed in is determined by the order of the elements in
+      the HTML. grid-row overrides this default ordering). */
+    grid-row: 1;
+    margin-bottom: 12px;
+  }
+}
+
+.delivery-date {
+  color: orange;
+  font-weight: 700;
+  font-size: 19px;
+  margin-top: 5px;
+  margin-bottom: 22px;
+}
+
+.cart-item-details-grid {
+  display: grid;
+  /* 100px 1fr 1fr; means the 2nd and 3rd column will
+     take up half the remaining space in the grid
+     (they will divide up the remaining space evenly). */
+  grid-template-columns: 100px 1fr 1fr;
+  column-gap: 25px;
+}
+
+@media (max-width: 1000px) {
+  .cart-item-details-grid {
+    grid-template-columns: 100px 1fr;
+    row-gap: 30px;
+  }
+}
+.product-image {
+  max-width: 100px;
+  max-height: 120px;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+.product-name {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.product-price {
+  color: orange;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.product-quantity .link-primary {
+  margin-left: 3px;
+  color: rgb(222, 222, 222);
+  cursor: pointer;
+}
+.product-quantity .link-primary:hover {
+  color: orange;
+}
+
+@media (max-width: 1000px) {
+  .delivery-options {
+    /* grid-column: 1 means this element will be placed
+       in column 1 in the grid. (Normally, the column that
+       an element is placed in is determined by the order
+       of the elements in the HTML. grid-column overrides
+       this default ordering).
+       
+       / span 2 means this element will take up 2 columns
+       in the grid (Normally, each element takes up 1
+       column in the grid). */
+    grid-column: 1 / span 2;
+  }
+}
+
+.delivery-options-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.delivery-option {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.delivery-option-input {
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+.delivery-option-date {
+  color: #ffa600bb;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.delivery-option-price {
+  color: rgb(120, 120, 120);
+  font-size: 15px;
+}
+
+.payment-summary-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.payment-summary-row {
+  display: grid;
+  /* 1fr auto; means the width of the 2nd column will be
+     determined by the elements inside the column (auto).
+     The 1st column will take up the remaining space. */
+  grid-template-columns: 1fr auto;
+
+  font-size: 15px;
+  margin-bottom: 9px;
+}
+
+.payment-summary-money {
+  text-align: right;
+}
+
+.subtotal-row .payment-summary-money {
+  border-top: 1px solid rgb(222, 222, 222);
+}
+
+.subtotal-row {
+  padding-top: 9px;
+}
+.total-row {
+  color: #ffa600bb;
+  font-weight: 700;
+  font-size: 18px;
+  border-top: 1px solid rgb(222, 222, 222);
+  padding-top: 18px;
+}
+.place-order-button {
+  width: 100%;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+
+  margin-top: 11px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.place-order-button:hover {
+  transform: translateY(-1px);
+  background-color: orange;
+  text-transform: capitalize;
+}
+/* THIS IS FOR THE NEW SAVE BUTTON IMPLEMENT */
+.quantity-input {
+  width: 30px;
+  display: none;
+}
+.save-quantity-link {
+  display: none;
+}
+.is-editting-quantity .quantity-input {
+  display: initial;
 }
 .is-editting-quantity .save-quantity-link {
   display: initial;

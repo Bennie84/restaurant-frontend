@@ -12,6 +12,18 @@ import { renderPaymentSummary } from "./paymentSummary.js";
 export function renderOrderSummary() {
   let cartSummaryHTML = "";
 
+  if (cart.length === 0) {
+    cartSummaryHTML = `
+      <div class="empty-cart-message">
+        Your cart is empty. Add items from the menu to continue.
+      </div>
+    `;
+
+    document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML;
+    renderPaymentSummary();
+    return;
+  }
+
   cart.forEach((cartItem) => {
     const productId = cartItem.productId;
 
@@ -83,7 +95,7 @@ export function renderOrderSummary() {
     let html = "";
 
     matchingProduct.customizationOptions.forEach((option) => {
-      const isChecked = Option.id === cartItem.customizationId;
+      const isChecked = option.id === cartItem.customizationId;
 
       html += `
   <div class="delivery-option">
@@ -139,7 +151,7 @@ export function renderOrderSummary() {
           productTotal += itemTotal;
 
           itemsHTML += `
- <div class="modal-items">
+ <div class="modal-item">
  <img src="${product.image}" alt="${product.name}"
  style="width:80px; height:80px; object-fit:cover; border-radius:6px; flex-shrink: 0;">
  <div class="modal-item-details">
@@ -198,18 +210,21 @@ export function renderOrderSummary() {
             currency: "NGN",
             callback: function (transaction) {
               console.log("SUCCESS FIRED", transaction);
-              fetch("https://my-restaurant-backend-d1zc.onrender.com/verify-payment", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
+              fetch(
+                "https://my-restaurant-backend-d1zc.onrender.com/verify-payment",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    reference: transaction.reference,
+                    email: "bennieeecodes@gmail.com",
+                    amount: orderTotal,
+                    items: cart,
+                  }),
                 },
-                body: JSON.stringify({
-                  reference: transaction.reference,
-                  email: "bennieeecodes@gmail.com",
-                  amount: orderTotal,
-                  items: cart,
-                }),
-              })
+              )
                 .then(function (response) {
                   return response.json();
                 })

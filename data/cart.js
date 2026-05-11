@@ -1,18 +1,7 @@
-export let cart = JSON.parse(localStorage.getItem('cart'));
+export let cart = JSON.parse(localStorage.getItem('cart') || '[]');
 
-if(!cart) {
-  cart = [
-    {
-      productId: "4",
-      quantity: 2,
-      customizationId: null,
-    },
-    {
-      productId: "15",
-      quantity: 1,
-      customizationId: null,
-    },
-  ];
+if (!Array.isArray(cart)) {
+  cart = [];
 }
 
 

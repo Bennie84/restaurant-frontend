@@ -4,23 +4,28 @@ import {getProduct} from '../../data/product.js';
 //THIS IS TO CALCULATE THE COST OF THE PRODUCT
 export function renderPaymentSummary() {
   let productPrice = 0;
+  let cartQuantity = 0;
 
   cart.forEach((cartItem) => {
     const product = getProduct(cartItem.productId);
-
     productPrice += product.price * cartItem.quantity;
+    cartQuantity += cartItem.quantity;
   });
-  //console.log(productPrice);
+
+  if (cart.length === 0) {
+    const paymentSummary = `
+      <div class="payment-summary-title">Order Summary</div>
+      <div class="payment-summary-empty">Your cart is empty.</div>
+    `;
+
+    document.querySelector('.js-payment-summary').innerHTML = paymentSummary;
+    return;
+  }
+
   const shippingCost = 2000;
   const totalBeforeTax = productPrice + shippingCost;
   const tax = totalBeforeTax * 0.1;
   const orderTotal = totalBeforeTax + tax;
-
- let cartQuantity = 0;
- cart.forEach((cartItem) => {
- cartQuantity +=
- cartItem.quantity;
- });
 
   const paymentSummary = `
  <div class="payment-summary-title">
@@ -57,5 +62,6 @@ export function renderPaymentSummary() {
   </button>
 
   `;
+
   document.querySelector('.js-payment-summary').innerHTML = paymentSummary;
 }
