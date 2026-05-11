@@ -1,13 +1,12 @@
-export let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+export let cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
 if (!Array.isArray(cart)) {
   cart = [];
 }
 
-
-  function saveToStorage () {
-    localStorage.setItem('cart', JSON.stringify(cart))
-  }
+function saveToStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 export function addToCart(productId) {
   let matchingItem;
@@ -24,7 +23,7 @@ export function addToCart(productId) {
     cart.push({
       productId: productId,
       quantity: 1,
-       customizationId : null // <- no default
+      customizationId: null, // <- no default
     });
   }
 
@@ -48,8 +47,7 @@ export function removeFromCart(productId) {
 export function calculateCartQuantity() {
   let cartQuantity = 0;
   cart.forEach((cartItem) => {
-    cartQuantity +=
-    cartItem.quantity;
+    cartQuantity += cartItem.quantity;
   });
 
   return cartQuantity;
@@ -81,7 +79,6 @@ export function updateCustomization(productId, newCustomizationId) {
   });
   saveToStorage();
 }
-
 
 // export let cart = JSON.parse(localStorage.getItem('cart'));  //THIS GETS THE ITEM, JSON.PARSE CONVERTS THE STRING BACK TO HTML
 

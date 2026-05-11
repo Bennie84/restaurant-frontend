@@ -27,16 +27,10 @@ export function renderOrderSummary() {
   cart.forEach((cartItem) => {
     const productId = cartItem.productId;
 
-    //WE REUSED THE CODE BY PUTTING IT IN A FUNCTION IN THE PRODUCT.JS AND WE CHANGED LET TO CONST
-
-    //let matchingProduct;
-    // products.forEach((product) => {
-    //   if (product.id === productId) {
-    //     matchingProduct = product;
-    //   }
-    // });
-    //END
     const matchingProduct = getProduct(productId);
+    if (!matchingProduct) {
+      return;
+    }
 
     const today = dayjs();
     const deliveryDate = today.add(30, "minutes");
@@ -92,9 +86,16 @@ export function renderOrderSummary() {
   //this function is to get the customizationoptions for the delivery options
 
   function deliveryOptionsHTML(matchingProduct, cartItem) {
-    let html = "";
+    const options = Array.isArray(matchingProduct.customizationOptions)
+      ? matchingProduct.customizationOptions
+      : [];
 
-    matchingProduct.customizationOptions.forEach((option) => {
+    if (options.length === 0) {
+      return `<div class="delivery-option-note">No customization options available.</div>`;
+    }
+
+    let html = "";
+    options.forEach((option) => {
       const isChecked = option.id === cartItem.customizationId;
 
       html += `
@@ -140,9 +141,11 @@ export function renderOrderSummary() {
         cart.forEach((cartItem) => {
           const product = getProduct(cartItem.productId);
 
-          const selectedOption = product.customizationOptions.find(
-            (opt) => opt.id === cartItem.customizationId,
-          );
+          const selectedOption =
+            Array.isArray(product.customizationOptions) &&
+            product.customizationOptions.find(
+              (opt) => opt.id === cartItem.customizationId,
+            );
           const customizationLabel = selectedOption
             ? selectedOption.label
             : "None selected";

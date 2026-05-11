@@ -1,5 +1,5 @@
-import {cart} from '../../data/cart.js';
-import {getProduct} from '../../data/product.js';
+import { cart } from "../../data/cart.js";
+import { getProduct } from "../../data/product.js";
 
 //THIS IS TO CALCULATE THE COST OF THE PRODUCT
 export function renderPaymentSummary() {
@@ -18,7 +18,7 @@ export function renderPaymentSummary() {
       <div class="payment-summary-empty">Your cart is empty.</div>
     `;
 
-    document.querySelector('.js-payment-summary').innerHTML = paymentSummary;
+    document.querySelector(".js-payment-summary").innerHTML = paymentSummary;
     return;
   }
 
@@ -63,5 +63,5 @@ export function renderPaymentSummary() {
 
   `;
 
-  document.querySelector('.js-payment-summary').innerHTML = paymentSummary;
+  document.querySelector(".js-payment-summary").innerHTML = paymentSummary;
 }

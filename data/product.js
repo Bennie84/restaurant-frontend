@@ -231,7 +231,7 @@ export const products = [
     image: "images/products/green-salad-garnish.jpeg",
     name: "Our green salad garnish with eggs and our special cream",
     price: 7000,
-    ustomizationOptions: [
+    customizationOptions: [
       { id: "no-cream", label: "No Cream" },
       { id: "extra-cream", label: "Extra Cream" },
       { id: "no-eggs", label: "No Eggs" },
