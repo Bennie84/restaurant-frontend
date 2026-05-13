@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard · Ember & Ash</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/admin.css" />
+    <script
+      src="https://kit.fontawesome.com/b491b3531e.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="admin-shell">
+      <header class="admin-header">
+        <div class="admin-brand">
+          <a href="index.html" class="nav-logo admin-logo">
+            <i class="fa-solid fa-utensils"></i>
+            <span>Ember & Ash</span>
+          </a>
+          <div class="admin-label">Admin Dashboard</div>
+        </div>
+        <div class="admin-actions">
+          <button class="button-secondary">View Store</button>
+          <button class="button-primary">Sign Out</button>
+        </div>
+      </header>
+
+      <main class="admin-main">
+        <section class="dashboard-intro">
+          <div>
+            <p class="eyebrow">Administrator</p>
+            <h1>Store performance overview</h1>
+            <p class="intro-text">
+              Monitor recent orders, sales performance, and customer activity in
+              one place.
+            </p>
+          </div>
+        </section>
+
+        <section class="metrics-grid">
+          <article class="metric-card">
+            <div class="metric-label">Total Orders</div>
+            <div class="metric-value">--</div>
+            <div class="metric-meta">All-time orders</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Revenue</div>
+            <div class="metric-value">--</div>
+            <div class="metric-meta">Total revenue earned</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Pending Orders</div>
+            <div class="metric-value">--</div>
+            <div class="metric-meta">Awaiting fulfillment</div>
+          </article>
+          <article class="metric-card">
+            <div class="metric-label">Confirmed Rate</div>
+            <div class="metric-value">--</div>
+            <div class="metric-meta">Success rate</div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <div class="panel panel-large">
+            <div class="panel-header">
+              <div>
+                <h2>All Orders</h2>
+                <p>Live order feed from your store.</p>
+              </div>
+              <div class="panel-controls">
+                <input
+                  type="search"
+                  placeholder="Search orders"
+                  class="search-input"
+                />
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="orders-table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Customer Email</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td
+                      colspan="5"
+                      style="text-align: center; padding: 2rem; color: #b0adb5"
+                    >
+                      Loading orders...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="scripts/admin.js"></script>
+  </body>
+</html>
