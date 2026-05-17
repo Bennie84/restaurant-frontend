@@ -9,6 +9,12 @@ import { products, getProduct } from "../../data/product.js";
 //import dayjs from '../../data/dayjs.js';
 import { renderPaymentSummary } from "./paymentSummary.js";
 
+const BACKEND_URL =
+  window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://localhost:3000"
+    : "https://my-restaurant-backend-d1zc.onrender.com";
+
 export function renderOrderSummary() {
   let cartSummaryHTML = "";
 
@@ -213,9 +219,7 @@ export function renderOrderSummary() {
             currency: "NGN",
             callback: function (transaction) {
               console.log("SUCCESS FIRED", transaction);
-              fetch(
-                "https://my-restaurant-backend-d1zc.onrender.com/verify-payment",
-                {
+              fetch(`${BACKEND_URL}/verify-payment`, {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
@@ -226,8 +230,7 @@ export function renderOrderSummary() {
                     amount: orderTotal,
                     items: cart,
                   }),
-                },
-              )
+                })
                 .then(function (response) {
                   return response.json();
                 })
